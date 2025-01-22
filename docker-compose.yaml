@@ -1,0 +1,7 @@
+services:
+  floater-trainer:
+    image: ghcr.io/janbo208/floater-trainer:latest
+    container_name: floater-trainer
+    restart: unless-stopped
+    ports:
+      - 8501:8501
