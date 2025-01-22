@@ -45,12 +45,12 @@ def reset_trainer():
 
 
 # Sidebar
-FIRST_LABEL = "First"
-SECOND_LABEL = "Second"
+FIRST_LABEL = "Discard from A"
+SECOND_LABEL = "Discard from B"
 NEXT_LABEL = "Next"
 
 with st.sidebar:
-    st.write("Choose the weaker floater tile")
+    st.write("Discard from the weaker shape")
     st.write("")
     st.markdown("Keyboard shortcuts")
     load_key_css()
@@ -144,9 +144,11 @@ if st.session_state.img_first:
         if st.session_state.show_counter:
             st.metric(label="counter", value=counter_text, label_visibility="collapsed")
     with col2:
+        st.text("Shape A")
         file_path = st.session_state.img_first.file_path
         st.image(file_path)
     with col3:
+        st.text("Shape B")
         file_path = st.session_state.img_second.file_path
         st.image(file_path)
 
