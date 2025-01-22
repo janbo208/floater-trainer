@@ -48,7 +48,7 @@ def reset_trainer():
 FIRST_LABEL = "First"
 SECOND_LABEL = "Second"
 NEXT_LABEL = "Next"
-FINISH_LABEL = "Finish"
+# FINISH_LABEL = "Finish"
 
 with st.sidebar:
     st.write("Choose the weaker floater tile")
@@ -62,8 +62,8 @@ with st.sidebar:
     with col2:
         key("↑")
         st.write(NEXT_LABEL)
-        key("↓")
-        st.write(FINISH_LABEL)
+        # key("↓")
+        # st.write(FINISH_LABEL)
     with col3:
         key("→")
         st.write(SECOND_LABEL)
@@ -161,7 +161,7 @@ answer_feedback = st.container()
 add_keyboard_shortcuts({"ArrowLeft": FIRST_LABEL,
                         "ArrowRight": SECOND_LABEL,
                         "ArrowUp": NEXT_LABEL,
-                        "ArrowDown": FINISH_LABEL,
+                        # "ArrowDown": FINISH_LABEL,
                         })
 
 
@@ -187,6 +187,15 @@ def check_answer(answer_correct):
         st.session_state.solved_count += 1
     if not st.session_state.finished:
         set_finished()
+    if st.session_state.finished:
+        @st.dialog("Result")
+        def show_result():
+            solved = st.session_state.solved_count
+            correct = st.session_state.correct_count
+            correct_pct = round(correct / solved * 100)
+            st.write(f"Correct answers: {correct}/{solved}")
+            st.write(f"{correct_pct}%")
+        show_result()
 
 
 with col2:
@@ -206,26 +215,10 @@ with col3:
               args=(answer_correct,))
 
 with col1:
-    button_disabled = not st.session_state.answer_chosen and not st.session_state.finished
-
-    def show_next_button(button_label):
-        if st.button(button_label, key=button_label,
-                     use_container_width=True,
-                     on_click=answer_chosen,
-                     disabled=button_disabled):
-            if st.session_state.finished:
-                @st.dialog("Result")
-                def show_result():
-                    solved = st.session_state.solved_count
-                    correct = st.session_state.correct_count
-                    correct_pct = round(correct / solved * 100)
-                    st.write(f"Correct answers: {correct}/{solved}")
-                    st.write(f"{correct_pct}%")
-                show_result()
-
+    button_disabled = not st.session_state.answer_chosen
     if st.session_state.finished:
-        button_label = FINISH_LABEL
-        show_next_button(button_label)
-    if not st.session_state.finished:
-        button_label = NEXT_LABEL
-        show_next_button(button_label)
+        button_disabled = True
+    st.button(NEXT_LABEL, key="next",
+              use_container_width=True,
+              on_click=answer_chosen,
+              disabled=button_disabled)
