@@ -48,7 +48,6 @@ def reset_trainer():
 FIRST_LABEL = "First"
 SECOND_LABEL = "Second"
 NEXT_LABEL = "Next"
-# FINISH_LABEL = "Finish"
 
 with st.sidebar:
     st.write("Choose the weaker floater tile")
@@ -62,8 +61,6 @@ with st.sidebar:
     with col2:
         key("↑")
         st.write(NEXT_LABEL)
-        # key("↓")
-        # st.write(FINISH_LABEL)
     with col3:
         key("→")
         st.write(SECOND_LABEL)
@@ -161,7 +158,6 @@ answer_feedback = st.container()
 add_keyboard_shortcuts({"ArrowLeft": FIRST_LABEL,
                         "ArrowRight": SECOND_LABEL,
                         "ArrowUp": NEXT_LABEL,
-                        # "ArrowDown": FINISH_LABEL,
                         })
 
 
