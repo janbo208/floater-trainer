@@ -166,8 +166,6 @@ add_keyboard_shortcuts({"ArrowLeft": FIRST_LABEL,
 
 
 def answer_chosen():
-    if st.session_state.correct_answer_chosen:
-        st.session_state.correct_count += 1
     st.session_state.answer_chosen = False
     st.session_state.correct_answer_chosen = False
     if not st.session_state.finished:
@@ -180,6 +178,7 @@ def check_answer(answer_correct):
             with answer_feedback:
                 st.success('Correct', icon="✅")
             st.session_state.correct_answer_chosen = True
+            st.session_state.correct_count += 1
         else:
             with answer_feedback:
                 st.error('Incorrect', icon="❌")
