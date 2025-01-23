@@ -1,3 +1,5 @@
+import time
+
 import constants as const
 import streamlit as st
 from streamlit_extras.keyboard_text import key, load_key_css
