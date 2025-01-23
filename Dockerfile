@@ -23,6 +23,7 @@ COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY app/ /app
 WORKDIR /
 COPY png/ /png
+COPY .streamlit/ /.streamlit
 
 EXPOSE 8501
 ENTRYPOINT ["/app/.venv/bin/streamlit", "run", "/app/navigation.py", "--server.port=8501", "--server.address=0.0.0.0"]

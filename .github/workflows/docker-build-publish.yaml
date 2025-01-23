@@ -3,7 +3,8 @@ name: Build and publish Docker image
 on:
   push:
     branches: ['master']
-    paths: ['app/**', '.github/workflows/**', '.streamlit/**']
+    paths-ignore:
+      - 'README.md'
 
 env:
   REGISTRY: ghcr.io
