@@ -166,7 +166,7 @@ add_keyboard_shortcuts({"ArrowLeft": FIRST_LABEL,
                         })
 
 
-def answer_chosen():
+def advance_question():
     st.session_state.answer_chosen = False
     st.session_state.correct_answer_chosen = False
     if not st.session_state.finished:
@@ -224,5 +224,5 @@ with col1:
         button_disabled = True
     st.button(NEXT_LABEL, key="next",
               use_container_width=True,
-              on_click=answer_chosen,
+              on_click=advance_question,
               disabled=button_disabled)
