@@ -186,6 +186,8 @@ def check_answer(answer_correct):
     if not st.session_state.finished:
         set_finished()
     if st.session_state.finished:
+        time.sleep(1.0)
+
         @st.dialog("Result")
         def show_result():
             solved = st.session_state.solved_count
