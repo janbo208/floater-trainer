@@ -18,8 +18,6 @@ if 'answer_chosen' not in st.session_state:
     st.session_state.answer_chosen = False
 if 'correct_answer_chosen' not in st.session_state:
     st.session_state.correct_answer_chosen = False
-if 'show_counter' not in st.session_state:
-    st.session_state.show_counter = False
 if 'list_types' not in st.session_state:
     st.session_state.list_types = []
 if 'started' not in st.session_state:
@@ -98,11 +96,14 @@ with col_settings:
             st.session_state.list_types = list_types
 
             # Counter
+            if 'show_counter' not in st.session_state:
+                st.session_state.show_counter = False
+
             def toggle_counter():
                 st.session_state.show_counter = st.session_state.toggle_counter
 
             st.checkbox("show counter",
-                        value=st.session_state["show_counter"],
+                        value=st.session_state.show_counter,
                         key="toggle_counter",
                         on_change=toggle_counter)
         with col2:
