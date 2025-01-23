@@ -201,11 +201,12 @@ def check_answer(answer_correct):
         show_result()
 
 
+disable_answer_button = st.session_state.finished or st.session_state.answer_chosen
 with col2:
     answer_correct = st.session_state.img_first.order < st.session_state.img_second.order
     st.button(FIRST_LABEL, key="answer_first",
               use_container_width=True,
-              disabled=st.session_state.finished,
+              disabled=disable_answer_button,
               on_click=check_answer,
               args=(answer_correct,))
 
@@ -213,7 +214,7 @@ with col3:
     answer_correct = st.session_state.img_second.order < st.session_state.img_first.order
     st.button(SECOND_LABEL, key="answer_second",
               use_container_width=True,
-              disabled=st.session_state.finished,
+              disabled=disable_answer_button,
               on_click=check_answer,
               args=(answer_correct,))
 
