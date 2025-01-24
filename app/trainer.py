@@ -106,6 +106,18 @@ with col_settings:
                         value=st.session_state.show_counter,
                         key="toggle_counter",
                         on_change=toggle_counter)
+
+            # Auto advance
+            if 'auto_advance' not in st.session_state:
+                st.session_state.auto_advance = True
+
+            def toggle_auto_advance():
+                st.session_state.auto_advance = st.session_state.toggle_auto_advance
+
+            st.checkbox("auto-advance after correct answer",
+                        value=st.session_state.auto_advance,
+                        key="toggle_auto_advance",
+                        on_change=toggle_auto_advance)
         with col2:
             # Question count
             if 'question_count' not in st.session_state:
@@ -188,6 +200,10 @@ def check_answer(answer_correct):
         st.session_state.solved_count += 1
     if not st.session_state.finished:
         set_finished()
+        if st.session_state.correct_answer_chosen and st.session_state.auto_advance:
+            time.sleep(0.5)
+            answer_feedback.empty()     # empty doesn't work
+            advance_question()
     if st.session_state.finished:
         time.sleep(1.0)
 
