@@ -107,14 +107,14 @@ with col_settings:
                         key="toggle_counter",
                         on_change=toggle_counter)
 
-            # Auto advance
+            # Auto advance after correct answer
             if 'auto_advance' not in st.session_state:
                 st.session_state.auto_advance = True
 
             def toggle_auto_advance():
                 st.session_state.auto_advance = st.session_state.toggle_auto_advance
 
-            st.checkbox("auto-advance after correct answer",
+            st.checkbox("auto advance  \n (after correct answer)",
                         value=st.session_state.auto_advance,
                         key="toggle_auto_advance",
                         on_change=toggle_auto_advance)
@@ -170,7 +170,16 @@ if st.session_state.img_first:
 
 # Answer buttons
 col1, col2, col3 = st.columns([1, 2.5, 2.5])
-answer_feedback = st.container()
+
+# Answer feedback
+answer_feedback = st.empty()
+if st.session_state.answer_chosen:
+    if st.session_state.correct_answer_chosen:
+        with answer_feedback:
+            st.success('Correct', icon="✅")
+    else:
+        with answer_feedback:
+            st.error('Incorrect', icon="❌")
 
 add_keyboard_shortcuts({"ArrowLeft": FIRST_LABEL,
                         "ArrowRight": SECOND_LABEL,
@@ -202,7 +211,6 @@ def check_answer(answer_correct):
         set_finished()
         if st.session_state.correct_answer_chosen and st.session_state.auto_advance:
             time.sleep(0.5)
-            answer_feedback.empty()     # empty doesn't work
             advance_question()
     if st.session_state.finished:
         time.sleep(1.0)
