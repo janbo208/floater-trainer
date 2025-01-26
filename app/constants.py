@@ -38,26 +38,28 @@ class ShapeList:
             reversed_shape = ''.join(str(value) for value in reversed_shape)
             return reversed_shape
 
-        reversed_list = []
+        reversed_shapes = []
         for shape in self.shapes:
             reversed_shape = reverse(shape)
-            reversed_list.append(reversed_shape)
-        return reversed_list
+            reversed_shapes.append(reversed_shape)
+        reversed_type = 10 - self.type
+
+        return ShapeList(reversed_type, reversed_shapes, self.order)
 
 
 FLOATER_LIST1 = ShapeList(1, ["147", "144", "14", "146", "145", "124", "1224", "157", "156",
                               "1", "134", "1123", "1567", "1456", "14556", "15", "1346",
                               "2", "13468", "1345"], 0)
-FLOATER_LIST9 = ShapeList(9, FLOATER_LIST1.reversed(), 0)
+FLOATER_LIST9 = FLOATER_LIST1.reversed()
 
 FLOATER_LIST2 = ShapeList(2, ["245", "257", "2457", "255", "258", "25", "268", "2579", "267",
                               "2", "24579", "2678", "2567", "25667", "2456", "2234", "26", "3"], 1)
-FLOATER_LIST8 = ShapeList(8, FLOATER_LIST2.reversed(), 1)
+FLOATER_LIST8 = FLOATER_LIST2.reversed()
 
 FLOATER_LIST3 = ShapeList(3, ["23578", "2", "356", "368", "336", "114", "36", "377", "379", "378",
                               "3", "1233", "3678", "36778", "1234", "37", "2344", "3567", "3345",
                               "3445", "2345", "3456", "334566", "1234567", "2345678"], 2)
-FLOATER_LIST7 = ShapeList(7, FLOATER_LIST3.reversed(), 2)
+FLOATER_LIST7 = FLOATER_LIST3.reversed()
 
 
 @dataclass
