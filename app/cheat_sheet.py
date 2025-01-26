@@ -8,16 +8,16 @@ with st.popover("Settings"):
     # Type
     if 'cs_type' not in st.session_state:
         st.session_state.cs_type = 0
-    options = [const.TYPEPAIR19.label, const.TYPEPAIR28.label, const.TYPEPAIR37.label]
+    options = [const.FLOATER_TYPE19.label, const.FLOATER_TYPE28.label, const.FLOATER_TYPE37.label]
 
     def set_cs_type():
         match st.session_state.cs_type_input:
-            case const.TYPEPAIR19.label:
-                st.session_state.cs_type = const.TYPEPAIR19.order
-            case const.TYPEPAIR28.label:
-                st.session_state.cs_type = const.TYPEPAIR28.order
-            case const.TYPEPAIR37.label:
-                st.session_state.cs_type = const.TYPEPAIR37.order
+            case const.FLOATER_TYPE19.label:
+                st.session_state.cs_type = const.FLOATER_TYPE19.order
+            case const.FLOATER_TYPE28.label:
+                st.session_state.cs_type = const.FLOATER_TYPE28.order
+            case const.FLOATER_TYPE37.label:
+                st.session_state.cs_type = const.FLOATER_TYPE37.order
 
     list_type = st.radio("Type",
                          options,
@@ -28,15 +28,15 @@ with st.popover("Settings"):
     type_first = 0
     type_second = 0
     match list_type:
-        case const.TYPEPAIR19.label:
-            type_first = const.TYPEPAIR19.first
-            type_second = const.TYPEPAIR19.second
-        case const.TYPEPAIR28.label:
-            type_first = const.TYPEPAIR28.first
-            type_second = const.TYPEPAIR28.second
-        case const.TYPEPAIR37.label:
-            type_first = const.TYPEPAIR37.first
-            type_second = const.TYPEPAIR37.second
+        case const.FLOATER_TYPE19.label:
+            type_first = const.FLOATER_TYPE19.first
+            type_second = const.FLOATER_TYPE19.second
+        case const.FLOATER_TYPE28.label:
+            type_first = const.FLOATER_TYPE28.first
+            type_second = const.FLOATER_TYPE28.second
+        case const.FLOATER_TYPE37.label:
+            type_first = const.FLOATER_TYPE37.first
+            type_second = const.FLOATER_TYPE37.second
 
     # Suit
     if 'cs_suit' not in st.session_state:

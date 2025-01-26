@@ -79,9 +79,9 @@ with col_settings:
         col1, col2 = st.columns(2)
         with col1:
             # Type
-            options = [const.TYPEPAIR19.label,
-                       const.TYPEPAIR28.label,
-                       const.TYPEPAIR37.label]
+            options = [const.FLOATER_TYPE19.label,
+                       const.FLOATER_TYPE28.label,
+                       const.FLOATER_TYPE37.label]
             if 'question_types' not in st.session_state:
                 st.session_state.question_types = options
 

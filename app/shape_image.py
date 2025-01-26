@@ -48,23 +48,23 @@ class ShapeImage:
 
 def randomize_list_order(list_types):
     order_list = []
-    if const.TYPEPAIR19.label in list_types:
-        order_list.append(const.TYPEPAIR19.order)
-    if const.TYPEPAIR28.label in list_types:
-        order_list.append(const.TYPEPAIR28.order)
-    if const.TYPEPAIR37.label in list_types:
-        order_list.append(const.TYPEPAIR37.order)
+    if const.FLOATER_TYPE19.label in list_types:
+        order_list.append(const.FLOATER_TYPE19.order)
+    if const.FLOATER_TYPE28.label in list_types:
+        order_list.append(const.FLOATER_TYPE28.order)
+    if const.FLOATER_TYPE37.label in list_types:
+        order_list.append(const.FLOATER_TYPE37.order)
     return random.choice(order_list)
 
 
 def ranomize_list_type(list_order):
     match list_order:
-        case const.TYPEPAIR19.order:
-            list_types = [const.TYPEPAIR19.first, const.TYPEPAIR19.second]
-        case const.TYPEPAIR28.order:
-            list_types = [const.TYPEPAIR28.first, const.TYPEPAIR28.second]
-        case const.TYPEPAIR37.order:
-            list_types = [const.TYPEPAIR37.first, const.TYPEPAIR37.second]
+        case const.FLOATER_TYPE19.order:
+            list_types = [const.FLOATER_TYPE19.first, const.FLOATER_TYPE19.second]
+        case const.FLOATER_TYPE28.order:
+            list_types = [const.FLOATER_TYPE28.first, const.FLOATER_TYPE28.second]
+        case const.FLOATER_TYPE37.order:
+            list_types = [const.FLOATER_TYPE37.first, const.FLOATER_TYPE37.second]
     list_type = random.choice(list_types)
     return list_type
 

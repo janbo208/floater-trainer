@@ -44,7 +44,7 @@ SHAPE_LIST7 = ["23578", "8", "457", "247", "477", "699", "47", "337", "137", "23
 
 
 @dataclass
-class TypePair:
+class FloaterType:
 
     label: str
     first: int
@@ -52,9 +52,9 @@ class TypePair:
     order: int
 
 
-TYPEPAIR19 = TypePair("19", 1, 9, 0)
-TYPEPAIR28 = TypePair("28", 2, 8, 1)
-TYPEPAIR37 = TypePair("37", 3, 7, 2)
+FLOATER_TYPE19 = FloaterType("19", 1, 9, 0)
+FLOATER_TYPE28 = FloaterType("28", 2, 8, 1)
+FLOATER_TYPE37 = FloaterType("37", 3, 7, 2)
 
 
 def get_shape_list(type):
