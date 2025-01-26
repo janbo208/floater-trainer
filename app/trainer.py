@@ -26,8 +26,6 @@ if 'reset_button_label' not in st.session_state:
     st.session_state.reset_button_label = "Start"
 if 'finished' not in st.session_state:
     st.session_state.finished = False
-if 'button_disabled' not in st.session_state:
-    st.session_state.button_disabled = False
 
 
 def reset_trainer():
