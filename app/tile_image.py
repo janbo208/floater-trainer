@@ -19,7 +19,7 @@ class TileImage:
 
     @property
     def order(self):
-        tile_list = const.get_tile_list(self.list_type)
+        tile_list = const.get_shape_list(self.list_type)
         index = tile_list.index(self.tiles)
         return index
 
@@ -76,7 +76,7 @@ def ranomize_list_type(list_order):
 
 
 def get_img(list_type, tile_suit="", tile_order=-1):
-    tile_list = const.get_tile_list(list_type)
+    tile_list = const.get_shape_list(list_type)
     if tile_order == -1:
         tile_order = random.randint(0, len(tile_list) - 1)
     if tile_suit == "":

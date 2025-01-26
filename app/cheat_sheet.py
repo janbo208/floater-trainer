@@ -70,12 +70,12 @@ with st.popover("Settings"):
 # Tile images
 col1, col2 = st.columns(2)
 with col1:
-    tile_list = const.get_tile_list(type_first)
+    tile_list = const.get_shape_list(type_first)
     for i in range(len(tile_list)):
         tile_img = get_img(type_first, tile_suit, i)
         st.image(tile_img.file_path_small)
 with col2:
-    tile_list = const.get_tile_list(type_second)
+    tile_list = const.get_shape_list(type_second)
     for i in range(len(tile_list)):
         tile_img = get_img(type_second, tile_suit, i)
         st.image(tile_img.file_path_small)
