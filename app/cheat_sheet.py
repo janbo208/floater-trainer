@@ -70,12 +70,12 @@ with st.popover("Settings"):
 # Shape images
 col1, col2 = st.columns(2)
 with col1:
-    shape_list = const.get_shape_list(type_first)
+    shape_list = const.get_floater_list(type_first)
     for i in range(len(shape_list)):
         shape_img = get_img(type_first, shape_suit, i)
         st.image(shape_img.file_path_small)
 with col2:
-    shape_list = const.get_shape_list(type_second)
+    shape_list = const.get_floater_list(type_second)
     for i in range(len(shape_list)):
         shape_img = get_img(type_second, shape_suit, i)
         st.image(shape_img.file_path_small)

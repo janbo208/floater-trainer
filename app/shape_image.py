@@ -31,7 +31,7 @@ class ShapeImage:
 
     @property
     def order(self):
-        shape_list = const.get_shape_list(self.list_type)
+        shape_list = const.get_floater_list(self.list_type)
         index = shape_list.index(self.shape)
         return index
 
@@ -70,7 +70,7 @@ def ranomize_list_type(list_order):
 
 
 def get_img(list_type, shape_suit="", shape_order=-1):
-    shape_list = const.get_shape_list(list_type)
+    shape_list = const.get_floater_list(list_type)
     if shape_order == -1:
         shape_order = random.randint(0, len(shape_list) - 1)
     if shape_suit == "":
