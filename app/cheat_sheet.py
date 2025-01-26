@@ -1,6 +1,6 @@
 import constants as const
 import streamlit as st
-from tile_image import get_img
+from shape_image import get_img
 
 # Settings
 with st.popover("Settings"):
@@ -52,30 +52,30 @@ with st.popover("Settings"):
             case const.Suits.sou.short:
                 st.session_state.cs_suit = const.Suits.sou.order
 
-    tile_suit = st.radio("Suit",
-                         options,
-                         horizontal=True,
-                         index=st.session_state.cs_suit,
-                         key="cs_suit_input",
-                         on_change=set_cs_suit)
+    shape_suit = st.radio("Suit",
+                          options,
+                          horizontal=True,
+                          index=st.session_state.cs_suit,
+                          key="cs_suit_input",
+                          on_change=set_cs_suit)
 
-    match tile_suit:
+    match shape_suit:
         case const.Suits.man.short:
-            tile_suit = const.Suits.man.short
+            shape_suit = const.Suits.man.short
         case const.Suits.pin.short:
-            tile_suit = const.Suits.pin.short
+            shape_suit = const.Suits.pin.short
         case const.Suits.sou.short:
-            tile_suit = const.Suits.sou.short
+            shape_suit = const.Suits.sou.short
 
-# Tile images
+# Shape images
 col1, col2 = st.columns(2)
 with col1:
-    tile_list = const.get_shape_list(type_first)
-    for i in range(len(tile_list)):
-        tile_img = get_img(type_first, tile_suit, i)
-        st.image(tile_img.file_path_small)
+    shape_list = const.get_shape_list(type_first)
+    for i in range(len(shape_list)):
+        shape_img = get_img(type_first, shape_suit, i)
+        st.image(shape_img.file_path_small)
 with col2:
-    tile_list = const.get_shape_list(type_second)
-    for i in range(len(tile_list)):
-        tile_img = get_img(type_second, tile_suit, i)
-        st.image(tile_img.file_path_small)
+    shape_list = const.get_shape_list(type_second)
+    for i in range(len(shape_list)):
+        shape_img = get_img(type_second, shape_suit, i)
+        st.image(shape_img.file_path_small)

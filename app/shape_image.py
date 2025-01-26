@@ -6,26 +6,26 @@ import streamlit as st
 
 
 @dataclass
-class TileImage:
+class ShapeImage:
 
-    tiles: str
+    shape: str
     suit: str
     list_type: int
 
-    def __init__(self, tiles, suit, list_type):
-        self.tiles = tiles
+    def __init__(self, shape, suit, list_type):
+        self.shape = shape
         self.suit = suit
         self.list_type = list_type
 
     @property
     def order(self):
-        tile_list = const.get_shape_list(self.list_type)
-        index = tile_list.index(self.tiles)
+        shape_list = const.get_shape_list(self.list_type)
+        index = shape_list.index(self.shape)
         return index
 
     @property
     def file_path(self):
-        filename = self.tiles + self.suit
+        filename = self.shape + self.suit
         img_folder = "/png/regular/"
         match self.suit:
             case const.Suits.man.short:
@@ -39,7 +39,7 @@ class TileImage:
 
     @property
     def file_path_small(self):
-        filename = self.tiles + self.suit
+        filename = self.shape + self.suit
         img_folder = "/png/small/"
         match self.suit:
             case const.Suits.man.short:
@@ -75,15 +75,15 @@ def ranomize_list_type(list_order):
     return list_type
 
 
-def get_img(list_type, tile_suit="", tile_order=-1):
-    tile_list = const.get_shape_list(list_type)
-    if tile_order == -1:
-        tile_order = random.randint(0, len(tile_list) - 1)
-    if tile_suit == "":
-        tile_suit = random.choice(const.Suits.short)
-    tile_string = tile_list[tile_order]
-    tile_img = TileImage(tile_string, tile_suit, list_type)
-    return tile_img
+def get_img(list_type, shape_suit="", shape_order=-1):
+    shape_list = const.get_shape_list(list_type)
+    if shape_order == -1:
+        shape_order = random.randint(0, len(shape_list) - 1)
+    if shape_suit == "":
+        shape_suit = random.choice(const.Suits.short)
+    shape = shape_list[shape_order]
+    shape_img = ShapeImage(shape, shape_suit, list_type)
+    return shape_img
 
 
 def get_answer_imgs(list_types):

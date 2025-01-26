@@ -2,9 +2,9 @@ import time
 
 import constants as const
 import streamlit as st
+from shape_image import get_answer_imgs
 from streamlit_extras.keyboard_text import key, load_key_css
 from streamlit_shortcuts import add_keyboard_shortcuts
-from tile_image import get_answer_imgs
 
 if 'img_first' not in st.session_state:
     st.session_state.img_first = None
@@ -148,7 +148,7 @@ if progress > 1.0:
     progress = 1.0
 progress_bar.progress(progress)
 
-# Tile images
+# Shape images
 if st.session_state.img_first:
     col1, col2, col3 = st.columns([1, 2.5, 2.5])
 
