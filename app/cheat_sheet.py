@@ -8,16 +8,16 @@ with st.popover("Settings"):
     # Type
     if 'cs_type' not in st.session_state:
         st.session_state.cs_type = 0
-    options = [const.TILEPAIR19.label, const.TILEPAIR28.label, const.TILEPAIR37.label]
+    options = [const.TYPEPAIR19.label, const.TYPEPAIR28.label, const.TYPEPAIR37.label]
 
     def set_cs_type():
         match st.session_state.cs_type_input:
-            case const.TILEPAIR19.label:
-                st.session_state.cs_type = const.TILEPAIR19.order
-            case const.TILEPAIR28.label:
-                st.session_state.cs_type = const.TILEPAIR28.order
-            case const.TILEPAIR37.label:
-                st.session_state.cs_type = const.TILEPAIR37.order
+            case const.TYPEPAIR19.label:
+                st.session_state.cs_type = const.TYPEPAIR19.order
+            case const.TYPEPAIR28.label:
+                st.session_state.cs_type = const.TYPEPAIR28.order
+            case const.TYPEPAIR37.label:
+                st.session_state.cs_type = const.TYPEPAIR37.order
 
     list_type = st.radio("Type",
                          options,
@@ -28,15 +28,15 @@ with st.popover("Settings"):
     type_first = 0
     type_second = 0
     match list_type:
-        case const.TILEPAIR19.label:
-            type_first = const.TILEPAIR19.first
-            type_second = const.TILEPAIR19.second
-        case const.TILEPAIR28.label:
-            type_first = const.TILEPAIR28.first
-            type_second = const.TILEPAIR28.second
-        case const.TILEPAIR37.label:
-            type_first = const.TILEPAIR37.first
-            type_second = const.TILEPAIR37.second
+        case const.TYPEPAIR19.label:
+            type_first = const.TYPEPAIR19.first
+            type_second = const.TYPEPAIR19.second
+        case const.TYPEPAIR28.label:
+            type_first = const.TYPEPAIR28.first
+            type_second = const.TYPEPAIR28.second
+        case const.TYPEPAIR37.label:
+            type_first = const.TYPEPAIR37.first
+            type_second = const.TYPEPAIR37.second
 
     # Suit
     if 'cs_suit' not in st.session_state:

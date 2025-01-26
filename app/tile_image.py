@@ -54,23 +54,23 @@ class TileImage:
 
 def randomize_list_order(list_types):
     order_list = []
-    if const.TILEPAIR19.label in list_types:
-        order_list.append(const.TILEPAIR19.order)
-    if const.TILEPAIR28.label in list_types:
-        order_list.append(const.TILEPAIR28.order)
-    if const.TILEPAIR37.label in list_types:
-        order_list.append(const.TILEPAIR37.order)
+    if const.TYPEPAIR19.label in list_types:
+        order_list.append(const.TYPEPAIR19.order)
+    if const.TYPEPAIR28.label in list_types:
+        order_list.append(const.TYPEPAIR28.order)
+    if const.TYPEPAIR37.label in list_types:
+        order_list.append(const.TYPEPAIR37.order)
     return random.choice(order_list)
 
 
 def ranomize_list_type(list_order):
     match list_order:
-        case const.TILEPAIR19.order:
-            list_types = [const.TILEPAIR19.first, const.TILEPAIR19.second]
-        case const.TILEPAIR28.order:
-            list_types = [const.TILEPAIR28.first, const.TILEPAIR28.second]
-        case const.TILEPAIR37.order:
-            list_types = [const.TILEPAIR37.first, const.TILEPAIR37.second]
+        case const.TYPEPAIR19.order:
+            list_types = [const.TYPEPAIR19.first, const.TYPEPAIR19.second]
+        case const.TYPEPAIR28.order:
+            list_types = [const.TYPEPAIR28.first, const.TYPEPAIR28.second]
+        case const.TYPEPAIR37.order:
+            list_types = [const.TYPEPAIR37.first, const.TYPEPAIR37.second]
     list_type = random.choice(list_types)
     return list_type
 

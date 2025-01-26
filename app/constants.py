@@ -44,7 +44,7 @@ TILE_LIST7 = ["23578", "8", "457", "247", "477", "699", "47", "337", "137", "237
 
 
 @dataclass
-class TilePair:
+class TypePair:
 
     label: str
     first: int
@@ -52,22 +52,22 @@ class TilePair:
     order: int
 
 
-TILEPAIR19 = TilePair("19", 1, 9, 0)
-TILEPAIR28 = TilePair("28", 2, 8, 1)
-TILEPAIR37 = TilePair("37", 3, 7, 2)
+TYPEPAIR19 = TypePair("19", 1, 9, 0)
+TYPEPAIR28 = TypePair("28", 2, 8, 1)
+TYPEPAIR37 = TypePair("37", 3, 7, 2)
 
 
 def get_tile_list(type):
     match type:
-        case TILEPAIR19.first:
+        case TYPEPAIR19.first:
             return TILE_LIST1
-        case TILEPAIR19.second:
+        case TYPEPAIR19.second:
             return TILE_LIST9
-        case TILEPAIR28.first:
+        case TYPEPAIR28.first:
             return TILE_LIST2
-        case TILEPAIR28.second:
+        case TYPEPAIR28.second:
             return TILE_LIST8
-        case TILEPAIR37.first:
+        case TYPEPAIR37.first:
             return TILE_LIST3
-        case TILEPAIR37.second:
+        case TYPEPAIR37.second:
             return TILE_LIST7
