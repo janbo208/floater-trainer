@@ -1,4 +1,4 @@
-FROM python:slim AS builder
+FROM python:3.12-slim AS builder
 
 RUN pip3 install poetry==2.0.1
 
@@ -13,7 +13,7 @@ COPY pyproject.toml poetry.lock ./
 
 RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --no-root
 
-FROM python:slim AS runtime
+FROM python:3.12-slim AS runtime
 
 ENV VIRTUAL_ENV=/app/.venv \
     PATH="/app/.venv/bin:$PATH"
