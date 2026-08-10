@@ -31,7 +31,7 @@ class ShapeImage:
 
     @property
     def order(self):
-        shape_list = const.get_floater_list(self.list_type)
+        shape_list = const.get_shape_list(self.list_type)
         index = shape_list.index(self.shape)
         return index
 
@@ -54,6 +54,12 @@ def randomize_list_order(list_types):
         order_list.append(const.FLOATER_TYPE28.order)
     if const.FLOATER_TYPE37.label in list_types:
         order_list.append(const.FLOATER_TYPE37.order)
+    if const.PENCHAN_TYPE19.label in list_types:
+        order_list.append(const.PENCHAN_TYPE19.order)
+    if const.KANCHAN_OUTER_TYPE19.label in list_types:
+        order_list.append(const.KANCHAN_OUTER_TYPE19.order)
+    if const.KANCHAN_INNER_TYPE19.label in list_types:
+        order_list.append(const.KANCHAN_INNER_TYPE19.order)
     return random.choice(order_list)
 
 
@@ -65,12 +71,18 @@ def ranomize_list_type(list_order):
             list_types = [const.FLOATER_TYPE28.first, const.FLOATER_TYPE28.second]
         case const.FLOATER_TYPE37.order:
             list_types = [const.FLOATER_TYPE37.first, const.FLOATER_TYPE37.second]
+        case const.PENCHAN_TYPE19.order:
+            list_types = [const.PENCHAN_TYPE19.first, const.PENCHAN_TYPE19.second]
+        case const.KANCHAN_OUTER_TYPE19.order:
+            list_types = [const.KANCHAN_OUTER_TYPE19.first, const.KANCHAN_OUTER_TYPE19.second]
+        case const.KANCHAN_INNER_TYPE19.order:
+            list_types = [const.KANCHAN_INNER_TYPE19.first, const.KANCHAN_INNER_TYPE19.second]
     list_type = random.choice(list_types)
     return list_type
 
 
 def get_img(list_type, shape_suit="", shape_order=-1):
-    shape_list = const.get_floater_list(list_type)
+    shape_list = const.get_shape_list(list_type)
     if shape_order == -1:
         shape_order = random.randint(0, len(shape_list) - 1)
     if shape_suit == "":

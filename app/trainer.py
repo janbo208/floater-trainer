@@ -79,7 +79,11 @@ with col_settings:
             # Type
             options = [const.FLOATER_TYPE19.label,
                        const.FLOATER_TYPE28.label,
-                       const.FLOATER_TYPE37.label]
+                       const.FLOATER_TYPE37.label,
+                       const.PENCHAN_TYPE19.label,
+                       const.KANCHAN_OUTER_TYPE19.label,
+                       const.KANCHAN_INNER_TYPE19.label
+                       ]
             if 'question_types' not in st.session_state:
                 st.session_state.question_types = options
 

@@ -8,7 +8,9 @@ with st.popover("Settings"):
     # Type
     if 'cs_type' not in st.session_state:
         st.session_state.cs_type = 0
-    options = [const.FLOATER_TYPE19.label, const.FLOATER_TYPE28.label, const.FLOATER_TYPE37.label]
+    options = [const.FLOATER_TYPE19.label, const.FLOATER_TYPE28.label, const.FLOATER_TYPE37.label,
+               const.PENCHAN_TYPE19.label,
+               const.KANCHAN_OUTER_TYPE19.label, const.KANCHAN_INNER_TYPE19.label]
 
     def set_cs_type():
         match st.session_state.cs_type_input:
@@ -18,6 +20,12 @@ with st.popover("Settings"):
                 st.session_state.cs_type = const.FLOATER_TYPE28.order
             case const.FLOATER_TYPE37.label:
                 st.session_state.cs_type = const.FLOATER_TYPE37.order
+            case const.PENCHAN_TYPE19.label:
+                st.session_state.cs_type = const.PENCHAN_TYPE19.order
+            case const.KANCHAN_OUTER_TYPE19.label:
+                st.session_state.cs_type = const.KANCHAN_OUTER_TYPE19.order
+            case const.KANCHAN_INNER_TYPE19.label:
+                st.session_state.cs_type = const.KANCHAN_INNER_TYPE19.order
 
     list_type = st.radio("Type",
                          options,
@@ -37,6 +45,15 @@ with st.popover("Settings"):
         case const.FLOATER_TYPE37.label:
             type_first = const.FLOATER_TYPE37.first
             type_second = const.FLOATER_TYPE37.second
+        case const.PENCHAN_TYPE19.label:
+            type_first = const.PENCHAN_TYPE19.first
+            type_second = const.PENCHAN_TYPE19.second
+        case const.KANCHAN_OUTER_TYPE19.label:
+            type_first = const.KANCHAN_OUTER_TYPE19.first
+            type_second = const.KANCHAN_OUTER_TYPE19.second
+        case const.KANCHAN_INNER_TYPE19.label:
+            type_first = const.KANCHAN_INNER_TYPE19.first
+            type_second = const.KANCHAN_INNER_TYPE19.second
 
     # Suit
     if 'cs_suit' not in st.session_state:
@@ -70,12 +87,12 @@ with st.popover("Settings"):
 # Shape images
 col1, col2 = st.columns(2)
 with col1:
-    shape_list = const.get_floater_list(type_first)
+    shape_list = const.get_shape_list(type_first)
     for i in range(len(shape_list)):
         shape_img = get_img(type_first, shape_suit, i)
         st.image(shape_img.file_path_small)
 with col2:
-    shape_list = const.get_floater_list(type_second)
+    shape_list = const.get_shape_list(type_second)
     for i in range(len(shape_list)):
         shape_img = get_img(type_second, shape_suit, i)
         st.image(shape_img.file_path_small)

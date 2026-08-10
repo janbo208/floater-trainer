@@ -42,7 +42,7 @@ class ShapeList:
         for shape in self.shapes:
             reversed_shape = reverse(shape)
             reversed_shapes.append(reversed_shape)
-        reversed_type = 10 - self.type
+        reversed_type = -self.type
 
         return ShapeList(reversed_type, reversed_shapes, self.order)
 
@@ -61,9 +61,22 @@ FLOATER_LIST3 = ShapeList(3, ["23578", "2", "356", "368", "336", "114", "36", "3
                               "3445", "2345", "3456", "334566", "1234567", "2345678"], 2)
 FLOATER_LIST7 = FLOATER_LIST3.reversed()
 
+PENCHAN_LIST1 = ShapeList(4, ["1224", "1246", "1244", "1245", "3", "1255", "1256", "1266", "1267",
+                              "12", "12567", "12456", "11223"], 3)
+PENCHAN_LIST9 = PENCHAN_LIST1.reversed()
+
+KANCHAN_OUTER_LIST1 = ShapeList(5, ["1346", "1344", "1335", "1334", "1356", "1366", "1367", "13",
+                                    "13678", "1355", "11233", "13345", "12234", "22344", "13567",
+                                "13456"], 4)
+KANCHAN_OUTER_LIST9 = KANCHAN_OUTER_LIST1.reversed()
+
+KANCHAN_INNER_LIST1 = ShapeList(6, ["3566", "3557", "3556", "3578", "35", "12346", "23446", "2235",
+                                    "33455", "35678"], 5)
+KANCHAN_INNER_LIST9 = KANCHAN_INNER_LIST1.reversed()
+
 
 @dataclass
-class FloaterType:
+class BlockType:
 
     label: str
     first: int
@@ -71,12 +84,15 @@ class FloaterType:
     order: int
 
 
-FLOATER_TYPE19 = FloaterType("19", 1, 9, 0)
-FLOATER_TYPE28 = FloaterType("28", 2, 8, 1)
-FLOATER_TYPE37 = FloaterType("37", 3, 7, 2)
+FLOATER_TYPE19 = BlockType("19", 1, -1, 0)
+FLOATER_TYPE28 = BlockType("28", 2, -2, 1)
+FLOATER_TYPE37 = BlockType("37", 3, -3, 2)
+PENCHAN_TYPE19 = BlockType("penchan", 4, -4, 3)
+KANCHAN_OUTER_TYPE19 = BlockType("outer kanchan", 5, -5, 4)
+KANCHAN_INNER_TYPE19 = BlockType("inner kanchan", 6, -6, 5)
 
 
-def get_floater_list(type):
+def get_shape_list(type):
     match type:
         case FLOATER_LIST1.type:
             return FLOATER_LIST1.shapes
@@ -90,3 +106,15 @@ def get_floater_list(type):
             return FLOATER_LIST3.shapes
         case FLOATER_LIST7.type:
             return FLOATER_LIST7.shapes
+        case PENCHAN_LIST1.type:
+            return PENCHAN_LIST1.shapes
+        case PENCHAN_LIST9.type:
+            return PENCHAN_LIST9.shapes
+        case KANCHAN_OUTER_LIST1.type:
+            return KANCHAN_OUTER_LIST1.shapes
+        case KANCHAN_OUTER_LIST9.type:
+            return KANCHAN_OUTER_LIST9.shapes
+        case KANCHAN_INNER_LIST1.type:
+            return KANCHAN_INNER_LIST1.shapes
+        case KANCHAN_INNER_LIST9.type:
+            return KANCHAN_INNER_LIST9.shapes
