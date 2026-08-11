@@ -84,6 +84,10 @@ with col_settings:
                        const.KANCHAN_OUTER_TYPE19.label,
                        const.KANCHAN_INNER_TYPE19.label
                        ]
+            default_options = [const.FLOATER_TYPE19.label,
+                               const.FLOATER_TYPE28.label,
+                               const.FLOATER_TYPE37.label,
+                               ]
             if 'question_types' not in st.session_state:
                 st.session_state.question_types = options
 
@@ -92,7 +96,7 @@ with col_settings:
 
             list_types = st.segmented_control(
                 "Type", options, selection_mode="multi",
-                default=st.session_state.question_types,
+                default=default_options,
                 key="types_input",
                 on_change=set_type)
             st.session_state.list_types = list_types
