@@ -8,24 +8,10 @@ with st.popover("Settings"):
     # Type
     if 'cs_type' not in st.session_state:
         st.session_state.cs_type = 0
-    options = [const.FLOATER_TYPE19.label, const.FLOATER_TYPE28.label, const.FLOATER_TYPE37.label,
-               const.PENCHAN_TYPE19.label,
-               const.KANCHAN_OUTER_TYPE19.label, const.KANCHAN_INNER_TYPE19.label]
+    options = const.TYPELABELS_LIST
 
     def set_cs_type():
-        match st.session_state.cs_type_input:
-            case const.FLOATER_TYPE19.label:
-                st.session_state.cs_type = const.FLOATER_TYPE19.order
-            case const.FLOATER_TYPE28.label:
-                st.session_state.cs_type = const.FLOATER_TYPE28.order
-            case const.FLOATER_TYPE37.label:
-                st.session_state.cs_type = const.FLOATER_TYPE37.order
-            case const.PENCHAN_TYPE19.label:
-                st.session_state.cs_type = const.PENCHAN_TYPE19.order
-            case const.KANCHAN_OUTER_TYPE19.label:
-                st.session_state.cs_type = const.KANCHAN_OUTER_TYPE19.order
-            case const.KANCHAN_INNER_TYPE19.label:
-                st.session_state.cs_type = const.KANCHAN_INNER_TYPE19.order
+        st.session_state.cs_type = const.TYPELABELS_LIST.index(st.session_state.cs_type_input)
 
     list_type = st.radio("Type",
                          options,
@@ -33,27 +19,9 @@ with st.popover("Settings"):
                          index=st.session_state.cs_type,
                          key="cs_type_input",
                          on_change=set_cs_type)
-    type_first = 0
-    type_second = 0
-    match list_type:
-        case const.FLOATER_TYPE19.label:
-            type_first = const.FLOATER_TYPE19.first
-            type_second = const.FLOATER_TYPE19.second
-        case const.FLOATER_TYPE28.label:
-            type_first = const.FLOATER_TYPE28.first
-            type_second = const.FLOATER_TYPE28.second
-        case const.FLOATER_TYPE37.label:
-            type_first = const.FLOATER_TYPE37.first
-            type_second = const.FLOATER_TYPE37.second
-        case const.PENCHAN_TYPE19.label:
-            type_first = const.PENCHAN_TYPE19.first
-            type_second = const.PENCHAN_TYPE19.second
-        case const.KANCHAN_OUTER_TYPE19.label:
-            type_first = const.KANCHAN_OUTER_TYPE19.first
-            type_second = const.KANCHAN_OUTER_TYPE19.second
-        case const.KANCHAN_INNER_TYPE19.label:
-            type_first = const.KANCHAN_INNER_TYPE19.first
-            type_second = const.KANCHAN_INNER_TYPE19.second
+
+    type_first = const.get_list_type_at(st.session_state.cs_type)
+    type_second = const.get_list_type_at(st.session_state.cs_type, True)
 
     # Suit
     if 'cs_suit' not in st.session_state:

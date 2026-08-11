@@ -74,47 +74,47 @@ KANCHAN_INNER_LIST1 = ShapeList(6, ["3566", "3557", "3556", "3578", "35", "12346
                                     "33455", "35678"], 5)
 KANCHAN_INNER_LIST9 = KANCHAN_INNER_LIST1.reversed()
 
+COMBINED_LIST = [FLOATER_LIST1,
+                 FLOATER_LIST2,
+                 FLOATER_LIST3,
+                 PENCHAN_LIST1,
+                 KANCHAN_OUTER_LIST1,
+                 KANCHAN_INNER_LIST1,
+                 ]
 
-@dataclass
-class BlockType:
+COMBINED_LIST_REVERSED = [FLOATER_LIST9,
+                          FLOATER_LIST8,
+                          FLOATER_LIST7,
+                          PENCHAN_LIST9,
+                          KANCHAN_OUTER_LIST9,
+                          KANCHAN_INNER_LIST9,
+                          ]
 
-    label: str
-    first: int
-    second: int
-    order: int
 
-
-FLOATER_TYPE19 = BlockType("19", 1, -1, 0)
-FLOATER_TYPE28 = BlockType("28", 2, -2, 1)
-FLOATER_TYPE37 = BlockType("37", 3, -3, 2)
-PENCHAN_TYPE19 = BlockType("penchan", 4, -4, 3)
-KANCHAN_OUTER_TYPE19 = BlockType("outer kanchan", 5, -5, 4)
-KANCHAN_INNER_TYPE19 = BlockType("inner kanchan", 6, -6, 5)
+def get_list_type_at(index, reversed=False):
+    if not reversed:
+        return COMBINED_LIST[index].type
+    else:
+        return COMBINED_LIST_REVERSED[index].type
 
 
 def get_shape_list(type):
-    match type:
-        case FLOATER_LIST1.type:
-            return FLOATER_LIST1.shapes
-        case FLOATER_LIST9.type:
-            return FLOATER_LIST9.shapes
-        case FLOATER_LIST2.type:
-            return FLOATER_LIST2.shapes
-        case FLOATER_LIST8.type:
-            return FLOATER_LIST8.shapes
-        case FLOATER_LIST3.type:
-            return FLOATER_LIST3.shapes
-        case FLOATER_LIST7.type:
-            return FLOATER_LIST7.shapes
-        case PENCHAN_LIST1.type:
-            return PENCHAN_LIST1.shapes
-        case PENCHAN_LIST9.type:
-            return PENCHAN_LIST9.shapes
-        case KANCHAN_OUTER_LIST1.type:
-            return KANCHAN_OUTER_LIST1.shapes
-        case KANCHAN_OUTER_LIST9.type:
-            return KANCHAN_OUTER_LIST9.shapes
-        case KANCHAN_INNER_LIST1.type:
-            return KANCHAN_INNER_LIST1.shapes
-        case KANCHAN_INNER_LIST9.type:
-            return KANCHAN_INNER_LIST9.shapes
+    if type > 0:
+        return COMBINED_LIST[type-1].shapes
+    else:
+        return COMBINED_LIST_REVERSED[-type-1].shapes
+
+
+@dataclass
+class TypeLabels:
+
+    floater19 = "19"
+    floater28 = "28"
+    floater37 = "37"
+    penchan = "penchan"
+    kanchan_outer = "outer kanchan"
+    kanchan_inner = "inner kanchan"
+
+
+TYPELABELS_LIST = [TypeLabels.floater19, TypeLabels.floater28, TypeLabels.floater37,
+                   TypeLabels.penchan, TypeLabels.kanchan_inner, TypeLabels.kanchan_outer]

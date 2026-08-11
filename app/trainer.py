@@ -77,17 +77,8 @@ with col_settings:
         col1, col2 = st.columns(2)
         with col1:
             # Type
-            options = [const.FLOATER_TYPE19.label,
-                       const.FLOATER_TYPE28.label,
-                       const.FLOATER_TYPE37.label,
-                       const.PENCHAN_TYPE19.label,
-                       const.KANCHAN_OUTER_TYPE19.label,
-                       const.KANCHAN_INNER_TYPE19.label
-                       ]
-            default_options = [const.FLOATER_TYPE19.label,
-                               const.FLOATER_TYPE28.label,
-                               const.FLOATER_TYPE37.label,
-                               ]
+            options = const.TYPELABELS_LIST
+            default_options = const.TYPELABELS_LIST[:3]
             if 'question_types' not in st.session_state:
                 st.session_state.question_types = options
 
