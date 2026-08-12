@@ -18,8 +18,8 @@ if 'answer_chosen' not in st.session_state:
     st.session_state.answer_chosen = False
 if 'correct_answer_chosen' not in st.session_state:
     st.session_state.correct_answer_chosen = False
-if 'list_types' not in st.session_state:
-    st.session_state.list_types = []
+if 'question_types' not in st.session_state:
+    st.session_state.question_types = []
 if 'started' not in st.session_state:
     st.session_state.started = False
 if 'reset_button_label' not in st.session_state:
@@ -29,8 +29,8 @@ if 'finished' not in st.session_state:
 
 
 def reset_trainer():
-    if st.session_state.list_types:
-        get_answer_imgs(st.session_state.list_types)
+    if st.session_state.question_types:
+        get_answer_imgs(st.session_state.question_types)
         st.session_state.started = True
         st.session_state.solved_count = 0
         st.session_state.correct_count = 0
@@ -79,18 +79,17 @@ with col_settings:
             # Type
             options = const.TYPELABELS_LIST
             default_options = const.TYPELABELS_LIST[:3]
-            if 'question_types' not in st.session_state:
-                st.session_state.question_types = options
+            if 'question_types' not in st.session_state or not st.session_state.question_types:
+                st.session_state.question_types = default_options
 
             def set_type():
                 st.session_state.question_types = st.session_state.types_input
 
-            list_types = st.segmented_control(
+            st.segmented_control(
                 "Type", options, selection_mode="multi",
-                default=default_options,
+                default=st.session_state.question_types,
                 key="types_input",
                 on_change=set_type)
-            st.session_state.list_types = list_types
 
             # Counter
             if 'show_counter' not in st.session_state:
@@ -188,7 +187,7 @@ def advance_question():
     st.session_state.answer_chosen = False
     st.session_state.correct_answer_chosen = False
     if not st.session_state.finished:
-        get_answer_imgs(st.session_state.list_types)
+        get_answer_imgs(st.session_state.question_types)
 
 
 def check_answer(answer_correct):
