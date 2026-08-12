@@ -13,12 +13,12 @@ with st.popover("Settings"):
     def set_cs_type():
         st.session_state.cs_type = const.TYPELABELS_LIST.index(st.session_state.cs_type_input)
 
-    list_type = st.radio("Type",
-                         options,
-                         horizontal=True,
-                         index=st.session_state.cs_type,
-                         key="cs_type_input",
-                         on_change=set_cs_type)
+    st.radio("Type",
+             options,
+             horizontal=True,
+             index=st.session_state.cs_type,
+             key="cs_type_input",
+             on_change=set_cs_type)
 
     type_first = const.get_list_type_at(st.session_state.cs_type)
     type_second = const.get_list_type_at(st.session_state.cs_type, True)
