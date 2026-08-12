@@ -2,7 +2,7 @@
 
 A mahjong tile efficiency trainer for comparing floating tiles.
 
-https://floater-trainer.streamlit.app
+https://floater-trainer.fly.dev
 
 Source material for the comparisons by Nemata: http://yabejp.web.fc2.com/mahjong/tactics/chapter01/section014.html
 
